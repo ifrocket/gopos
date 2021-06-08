@@ -1,24 +1,26 @@
-/* Go to element position */
+/* Animated scroll to element position with jQuery */
+// Usage: gopos(object / "id" / "class", top position, speed);
+
 function gopos(obj, top, speed) {
 
     var elem,
         toppos;
 
-    if(speed == "") {
+    if(speed === "") {
         speed = "slow";
     }
 
-    if($("#" + obj).length > 0) {
-        elem = $("#" + obj);
-    }
-    else if($("." + obj).length > 0) {
-        elem = $("." + obj);
-    }
-    else if(obj.length > 0) {
+    if($.type(obj) === "object") {
         elem = obj;
     }
     else {
-        return false;
+
+        if ($("#" + obj).length) {
+            elem = $("#" + obj);
+        } else if ($("." + obj).length) {
+            elem = $("." + obj);
+        }
+
     }
 
     if(top) {
